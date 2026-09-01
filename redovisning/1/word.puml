@@ -1,0 +1,38 @@
+@startuml
+
+' === Interfaces ===
+abstract class Word {
+  + add(Word, Word)
+  + mul(Word , Word)
+  + toString()
+  + getValue()
+  + copy(Word)
+  + equals(Word)
+}
+
+interface WordFactory {
+  + word(String value) : Word
+}
+
+' === Concrete Words ===
+class LongWord implements Word {
+  - long Long
+}
+class ByteWord implements Word {
+   - byte Byte
+}
+
+' === Concrete Factories ===
+class LongWordFactory implements WordFactory
+class ByteWordFactory implements WordFactory
+
+' === Relations ===
+
+
+
+
+' Optional: Factory creates Word
+LongWordFactory --> LongWord
+ByteWordFactory --> ByteWord
+
+@enduml

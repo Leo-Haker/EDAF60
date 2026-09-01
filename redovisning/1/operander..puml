@@ -1,0 +1,49 @@
+@startuml
+' === Operands package ===
+
+abstract class Program {
+  - List<Instruction> instructions
+  + add(Instruction)
+}
+
+class Factorial extends Program {
+  + Factorial(String value, WordFactory wf)
+}
+
+interface Operand {
+  + getWord(Memory): Word
+
+}
+
+class Word implements Operand{
+  + getWord(Memory): this Word
+
+}
+class Address implements Operand {
+  - int index
+  + getWord(Memory) : Word 
+}
+
+
+class Memory {
+  - Word[] cells
+  + getWord(int): Word
+}
+
+class Computer {
+  - Memory memory
+  - Program program
+  - int pc
+}
+
+class ProgramCounter{
+  - int 
+}
+
+Operand --> Memory
+Copmuter --- Memory
+Computer --- Program
+
+@enduml
+
+

@@ -1,0 +1,54 @@
+@startuml
+' === Instructions package ===
+
+interface Instruction {
+    + execute(Memory, ProgramCounter) : void
+}
+
+class Copy implements Instruction {
+  - Operand src
+  - Address dest
+}
+
+class JumpEq implements Instruction {
+  - int index
+  - Operand condition
+  - Address addr
+}
+
+class Mul implements Instruction {
+  - Operand left
+  - Operand right
+  - Address dest
+}
+
+class Add implements Instruction {
+  - Operand left
+  - Operand right
+  - Address dest
+}
+
+class Jump implements Instruction {
+  - int index
+}
+
+class Print implements Instruction {
+  - Address addr
+}
+
+class Halt implements Instruction
+
+
+
+' === Relations to operands ===
+Copy --> Operand : src
+Copy --> Address : dest
+JumpEq --> Operand : condition
+JumpEq --> Address : addr
+Add --> Operand : left, right
+Add --> Address : dest
+Mul --> Operand : left, right
+Mul --> Address : dest
+Print --> Address : addr
+
+@enduml
